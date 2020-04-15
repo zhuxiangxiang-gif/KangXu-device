@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="devcie-eureka" />
+        <module name="device-api" />
+        <module name="device-commons" />
+        <module name="device-consumer" />
+        <module name="device-provider" />
+        <module name="eureke-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="autodevice" target="1.8" />
+      <module name="devcie-eureka" target="1.8" />
+      <module name="device-api" target="1.8" />
+      <module name="device-commons" target="1.8" />
+      <module name="device-consumer" target="1.8" />
+      <module name="device-provider" target="1.8" />
+      <module name="eureke-service" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kangxu.device.mapper.TDevStatusMapper">
+  <resultMap id="BaseResultMap" type="com.kangxu.device.pojo.TDevStatus">
+    <result column="ID" jdbcType="BIGINT" property="id" />
+    <result column="DS_DEV_NO" jdbcType="VARCHAR" property="dsDevNo" />
+    <result column="DS_STATUS" jdbcType="VARCHAR" property="dsStatus" />
+    <result column="DS_STATUS_TIME" jdbcType="TIMESTAMP" property="dsStatusTime" />
+  </resultMap>
+  <!--<resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="pojo.TDevStatus">
+    <result column="DS_COUNT" jdbcType="LONGVARCHAR" property="dsCount" />
+  </resultMap>-->
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, DS_DEV_NO, DS_STATUS, DS_STATUS_TIME
+  </sql>
+  <sql id="Blob_Column_List">
+    DS_COUNT
+  </sql>
+
+  <insert id="insert" parameterType="com.kangxu.device.pojo.TDevStatus">
+    insert into t_dev_status (ID, DS_DEV_NO, DS_STATUS, 
+      DS_STATUS_TIME, DS_COUNT)
+    values (#{id,jdbcType=BIGINT}, #{dsDevNo,jdbcType=VARCHAR}, #{dsStatus,jdbcType=VARCHAR}, 
+      #{dsStatusTime,jdbcType=TIMESTAMP}, #{dsCount,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kangxu.device.pojo.TDevStatus">
+    insert into t_dev_status
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="dsDevNo != null">
+        DS_DEV_NO,
+      </if>
+      <if test="dsStatus != null">
+        DS_STATUS,
+      </if>
+      <if test="dsStatusTime != null">
+        DS_STATUS_TIME,
+      </if>
+      <if test="dsCount != null">
+        DS_COUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="dsDevNo != null">
+        #{dsDevNo,jdbcType=VARCHAR},
+      </if>
+      <if test="dsStatus != null">
+        #{dsStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="dsStatusTime != null">
+        #{dsStatusTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dsCount != null">
+        #{dsCount,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+
+</mapper>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kangxu.device.mapper.TDevInfoMapper">
+  <resultMap id="BaseResultMap" type="com.kangxu.device.pojo.TDevInfo">
+    <result column="ID" jdbcType="BIGINT" property="id" />
+    <result column="DI_DEV_NO" jdbcType="VARCHAR" property="diDevNo" />
+    <result column="DI_DEPART_ID" jdbcType="BIGINT" property="diDepartId" />
+    <result column="DI_DEV_BRAND" jdbcType="VARCHAR" property="diDevBrand" />
+    <result column="DI_DEV_TYPE" jdbcType="VARCHAR" property="diDevType" />
+    <result column="DI_DEV_MODEL" jdbcType="VARCHAR" property="diDevModel" />
+    <result column="DI_INSTALL_DATE" jdbcType="DATE" property="diInstallDate" />
+    <result column="DI_OVER_DATE" jdbcType="DATE" property="diOverDate" />
+    <result column="DI_REMARKS" jdbcType="VARCHAR" property="diRemarks" />
+    <result column="DI_BACKUP1" jdbcType="VARCHAR" property="diBackup1" />
+    <result column="DI_BACKUP2" jdbcType="VARCHAR" property="diBackup2" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="DI_STATUS" jdbcType="VARCHAR" property="diStatus" />
+    <result column="DELETED" jdbcType="SMALLINT" property="deleted" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, DI_DEV_NO, DI_DEPART_ID, DI_DEV_BRAND, DI_DEV_TYPE, DI_DEV_MODEL, DI_INSTALL_DATE, 
+    DI_OVER_DATE, DI_REMARKS, DI_BACKUP1, DI_BACKUP2, CREATE_USER, CREATE_TIME, UPDATE_USER, 
+    UPDATE_TIME, DI_STATUS, DELETED
+  </sql>
+  <!--<select id="selectByExample" parameterType="pojo.TDevInfoExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from t_dev_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>-->
+ <!-- <delete id="deleteByExample" parameterType="pojo.TDevInfoExample">
+    delete from t_dev_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>-->
+  <select id="findAll" resultMap="BaseResultMap">
+    SELECT
+      t1.ID, t1.DI_DEV_NO, t1.DI_DEPART_ID, t1.DI_DEV_BRAND, t1.DI_DEV_TYPE, t1.DI_DEV_MODEL, t1.DI_INSTALL_DATE,
+    t1.DI_OVER_DATE, t1.DI_REMARKS, t1.DI_BACKUP1, t1.DI_BACKUP2, t1.CREATE_USER, t1.CREATE_TIME, t1.UPDATE_USER,
+    t1.UPDATE_TIME, t1.DI_STATUS, t1.DELETED
+    FROM t_dev_info t1 INNER JOIN t_sys_depart t2 on t1.DI_DEPART_ID = t2.id where t1.deleted = 0
+  </select>
+  <insert id="insert" parameterType="com.kangxu.device.pojo.TDevInfo">
+    insert into t_dev_info (ID, DI_DEV_NO, DI_DEPART_ID, 
+      DI_DEV_BRAND, DI_DEV_TYPE, DI_DEV_MODEL, 
+      DI_INSTALL_DATE, DI_OVER_DATE, DI_REMARKS, 
+      DI_BACKUP1, DI_BACKUP2, CREATE_USER, 
+      CREATE_TIME, UPDATE_USER, UPDATE_TIME, 
+      DI_STATUS, DELETED)
+    values (#{id,jdbcType=BIGINT}, #{diDevNo,jdbcType=VARCHAR}, #{diDepartId,jdbcType=BIGINT}, 
+      #{diDevBrand,jdbcType=VARCHAR}, #{diDevType,jdbcType=VARCHAR}, #{diDevModel,jdbcType=VARCHAR}, 
+      #{diInstallDate,jdbcType=DATE}, #{diOverDate,jdbcType=DATE}, #{diRemarks,jdbcType=VARCHAR}, 
+      #{diBackup1,jdbcType=VARCHAR}, #{diBackup2,jdbcType=VARCHAR}, #{createUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{diStatus,jdbcType=VARCHAR}, #{deleted,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kangxu.device.pojo.TDevInfo">
+    insert into t_dev_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="diDevNo != null">
+        DI_DEV_NO,
+      </if>
+      <if test="diDepartId != null">
+        DI_DEPART_ID,
+      </if>
+      <if test="diDevBrand != null">
+        DI_DEV_BRAND,
+      </if>
+      <if test="diDevType != null">
+        DI_DEV_TYPE,
+      </if>
+      <if test="diDevModel != null">
+        DI_DEV_MODEL,
+      </if>
+      <if test="diInstallDate != null">
+        DI_INSTALL_DATE,
+      </if>
+      <if test="diOverDate != null">
+        DI_OVER_DATE,
+      </if>
+      <if test="diRemarks != null">
+        DI_REMARKS,
+      </if>
+      <if test="diBackup1 != null">
+        DI_BACKUP1,
+      </if>
+      <if test="diBackup2 != null">
+        DI_BACKUP2,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+      <if test="diStatus != null">
+        DI_STATUS,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="diDevNo != null">
+        #{diDevNo,jdbcType=VARCHAR},
+      </if>
+      <if test="diDepartId != null">
+        #{diDepartId,jdbcType=BIGINT},
+      </if>
+      <if test="diDevBrand != null">
+        #{diDevBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="diDevType != null">
+        #{diDevType,jdbcType=VARCHAR},
+      </if>
+      <if test="diDevModel != null">
+        #{diDevModel,jdbcType=VARCHAR},
+      </if>
+      <if test="diInstallDate != null">
+        #{diInstallDate,jdbcType=DATE},
+      </if>
+      <if test="diOverDate != null">
+        #{diOverDate,jdbcType=DATE},
+      </if>
+      <if test="diRemarks != null">
+        #{diRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="diBackup1 != null">
+        #{diBackup1,jdbcType=VARCHAR},
+      </if>
+      <if test="diBackup2 != null">
+        #{diBackup2,jdbcType=VARCHAR},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="diStatus != null">
+        #{diStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <!--<select id="countByExample" parameterType="pojo.TDevInfoExample" resultType="java.lang.Long">
+    select count(*) from t_dev_info
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>-->
+  <!--<update id="updateByExampleSelective" parameterType="map">
+    update t_dev_info
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.diDevNo != null">
+        DI_DEV_NO = #{record.diDevNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diDepartId != null">
+        DI_DEPART_ID = #{record.diDepartId,jdbcType=BIGINT},
+      </if>
+      <if test="record.diDevBrand != null">
+        DI_DEV_BRAND = #{record.diDevBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diDevType != null">
+        DI_DEV_TYPE = #{record.diDevType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diDevModel != null">
+        DI_DEV_MODEL = #{record.diDevModel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diInstallDate != null">
+        DI_INSTALL_DATE = #{record.diInstallDate,jdbcType=DATE},
+      </if>
+      <if test="record.diOverDate != null">
+        DI_OVER_DATE = #{record.diOverDate,jdbcType=DATE},
+      </if>
+      <if test="record.diRemarks != null">
+        DI_REMARKS = #{record.diRemarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diBackup1 != null">
+        DI_BACKUP1 = #{record.diBackup1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diBackup2 != null">
+        DI_BACKUP2 = #{record.diBackup2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createUser != null">
+        CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createTime != null">
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null">
+        UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.diStatus != null">
+        DI_STATUS = #{record.diStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deleted != null">
+        DELETED = #{record.deleted,jdbcType=SMALLINT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>-->
+  <!--<update id="updateByExample" parameterType="map">
+    update t_dev_info
+    set ID = #{record.id,jdbcType=BIGINT},
+      DI_DEV_NO = #{record.diDevNo,jdbcType=VARCHAR},
+      DI_DEPART_ID = #{record.diDepartId,jdbcType=BIGINT},
+      DI_DEV_BRAND = #{record.diDevBrand,jdbcType=VARCHAR},
+      DI_DEV_TYPE = #{record.diDevType,jdbcType=VARCHAR},
+      DI_DEV_MODEL = #{record.diDevModel,jdbcType=VARCHAR},
+      DI_INSTALL_DATE = #{record.diInstallDate,jdbcType=DATE},
+      DI_OVER_DATE = #{record.diOverDate,jdbcType=DATE},
+      DI_REMARKS = #{record.diRemarks,jdbcType=VARCHAR},
+      DI_BACKUP1 = #{record.diBackup1,jdbcType=VARCHAR},
+      DI_BACKUP2 = #{record.diBackup2,jdbcType=VARCHAR},
+      CREATE_USER = #{record.createUser,jdbcType=VARCHAR},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      UPDATE_USER = #{record.updateUser,jdbcType=VARCHAR},
+      UPDATE_TIME = #{record.updateTime,jdbcType=TIMESTAMP},
+      DI_STATUS = #{record.diStatus,jdbcType=VARCHAR},
+      DELETED = #{record.deleted,jdbcType=SMALLINT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>-->
+</mapper>

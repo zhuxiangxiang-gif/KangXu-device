@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/../autodevice" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../autodevice/devcie-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../autodevice/device-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../autodevice/device-commons" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../autodevice/device-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../autodevice/device-provider" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>
