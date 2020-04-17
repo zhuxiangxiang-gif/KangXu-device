@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kangxu.device.mapper.DevInfoMapper">
+
+  <sql id="Base_Column_List">
+    t1.id as id
+    , t1.di_dev_no as diDevNo
+    , t1.di_depart_id as diDepartId
+    , t1.di_dev_brand as diDevBrand
+    , t1.di_dev_type as diDevType
+    , t1.di_dev_model as diDevModel
+    , t1.di_install_date as diInstallDate
+    , t1.di_over_date as diOverDate
+    , t1.di_status as diStatus
+
+    , t1.di_remarks as diRemarks
+    , t1.di_backup1 as diBackup1
+    , t1.di_backup2 as diBackup2
+    , t1.deleted as deleted
+   </sql>
+
+  <!-- 模板方法START -->
+  <insert id="insert" parameterType="com.kangxu.device.pojo.DevInfo">
+    insert into t_dev_info (
+      di_dev_no
+      , di_depart_id
+      , di_install_date
+      , di_over_date
+      , di_status
+      , deleted)
+    values
+      (#{diDevNo}
+      , #{diDepartId}
+      , #{diInstallDate}
+      , #{diOverDate}
+      , #{diStatus}
+      , #{deleted})
+  </insert>
+
+  <select id="findById" parameterType="java.lang.Long" resultType="com.kangxu.device.pojo.DevInfo">
+    select
+    <include refid="Base_Column_List" />
+    from t_dev_info t1, t_sys_depart t2
+    where t1.di_depart_id = t2.id
+    and t1.id = #{id} and t1.deleted = 0
+  </select>
+
+  <select id="findAll" resultType="com.kangxu.device.pojo.DevInfo">
+    select
+    <include refid="Base_Column_List" />
+    from t_dev_info t1, t_sys_depart t2
+    where t1.di_depart_id = t2.id
+    and t1.deleted = 0
+  </select>
+
+
+
+</mapper>

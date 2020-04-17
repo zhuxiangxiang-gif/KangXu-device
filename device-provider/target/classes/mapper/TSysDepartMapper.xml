@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kangxu.device.mapper.TSysDepartMapper">
+  <resultMap id="BaseResultMap" type="com.kangxu.device.pojo.TSysDepart">
+    <result column="ID" jdbcType="BIGINT" property="id" />
+    <result column="SD_NAME" jdbcType="VARCHAR" property="sdName" />
+    <result column="SD_MEMO" jdbcType="VARCHAR" property="sdMemo" />
+    <result column="SD_PID" jdbcType="VARCHAR" property="sdPid" />
+    <result column="SD_CODE" jdbcType="VARCHAR" property="sdCode" />
+    <result column="SD_TYPE" jdbcType="VARCHAR" property="sdType" />
+    <result column="SD_MOBILE" jdbcType="VARCHAR" property="sdMobile" />
+    <result column="SD_FAX" jdbcType="VARCHAR" property="sdFax" />
+    <result column="SD_ADDRESS" jdbcType="VARCHAR" property="sdAddress" />
+    <result column="SD_ORDER" jdbcType="SMALLINT" property="sdOrder" />
+    <result column="DELETED" jdbcType="SMALLINT" property="deleted" />
+    <result column="CREATE_USER" jdbcType="VARCHAR" property="createUser" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="UPDATE_USER" jdbcType="VARCHAR" property="updateUser" />
+    <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, SD_NAME, SD_MEMO, SD_PID, SD_CODE, SD_TYPE, SD_MOBILE, SD_FAX, SD_ADDRESS, SD_ORDER, 
+    DELETED, CREATE_USER, CREATE_TIME, UPDATE_USER, UPDATE_TIME
+  </sql>
+
+
+  <insert id="insert" parameterType="com.kangxu.device.pojo.TSysDepart">
+    insert into t_sys_depart (ID, SD_NAME, SD_MEMO, 
+      SD_PID, SD_CODE, SD_TYPE, 
+      SD_MOBILE, SD_FAX, SD_ADDRESS, 
+      SD_ORDER, DELETED, CREATE_USER, 
+      CREATE_TIME, UPDATE_USER, UPDATE_TIME
+      )
+    values (#{id,jdbcType=BIGINT}, #{sdName,jdbcType=VARCHAR}, #{sdMemo,jdbcType=VARCHAR}, 
+      #{sdPid,jdbcType=VARCHAR}, #{sdCode,jdbcType=VARCHAR}, #{sdType,jdbcType=VARCHAR}, 
+      #{sdMobile,jdbcType=VARCHAR}, #{sdFax,jdbcType=VARCHAR}, #{sdAddress,jdbcType=VARCHAR}, 
+      #{sdOrder,jdbcType=SMALLINT}, #{deleted,jdbcType=SMALLINT}, #{createUser,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.kangxu.device.pojo.TSysDepart">
+    insert into t_sys_depart
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="sdName != null">
+        SD_NAME,
+      </if>
+      <if test="sdMemo != null">
+        SD_MEMO,
+      </if>
+      <if test="sdPid != null">
+        SD_PID,
+      </if>
+      <if test="sdCode != null">
+        SD_CODE,
+      </if>
+      <if test="sdType != null">
+        SD_TYPE,
+      </if>
+      <if test="sdMobile != null">
+        SD_MOBILE,
+      </if>
+      <if test="sdFax != null">
+        SD_FAX,
+      </if>
+      <if test="sdAddress != null">
+        SD_ADDRESS,
+      </if>
+      <if test="sdOrder != null">
+        SD_ORDER,
+      </if>
+      <if test="deleted != null">
+        DELETED,
+      </if>
+      <if test="createUser != null">
+        CREATE_USER,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="updateUser != null">
+        UPDATE_USER,
+      </if>
+      <if test="updateTime != null">
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="sdName != null">
+        #{sdName,jdbcType=VARCHAR},
+      </if>
+      <if test="sdMemo != null">
+        #{sdMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="sdPid != null">
+        #{sdPid,jdbcType=VARCHAR},
+      </if>
+      <if test="sdCode != null">
+        #{sdCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sdType != null">
+        #{sdType,jdbcType=VARCHAR},
+      </if>
+      <if test="sdMobile != null">
+        #{sdMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sdFax != null">
+        #{sdFax,jdbcType=VARCHAR},
+      </if>
+      <if test="sdAddress != null">
+        #{sdAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="sdOrder != null">
+        #{sdOrder,jdbcType=SMALLINT},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=SMALLINT},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

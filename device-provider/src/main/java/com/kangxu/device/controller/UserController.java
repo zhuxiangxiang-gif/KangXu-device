@@ -17,6 +17,7 @@ import java.util.List;
  **/
 @RestController
 @Slf4j
+@RequestMapping(value = "/kangxu")
 public class UserController {
 
     @Autowired

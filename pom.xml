@@ -13,6 +13,7 @@
         <module>device-api</module>
         <module>device-consumer</module>
         <module>devcie-eureka</module>
+        <module>Zuul</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../autodevice/Zuul/Zuul.iml" filepath="$PROJECT_DIR$/../autodevice/Zuul/Zuul.iml" />
       <module fileurl="file://$PROJECT_DIR$/autodevice.iml" filepath="$PROJECT_DIR$/autodevice.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../autodevice/devcie-eureka/devcie-eureka.iml" filepath="$PROJECT_DIR$/../autodevice/devcie-eureka/devcie-eureka.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../autodevice/device-api/device-api.iml" filepath="$PROJECT_DIR$/../autodevice/device-api/device-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/devcie-eureka/devcie-eureka.iml" filepath="$PROJECT_DIR$/devcie-eureka/devcie-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/device-api/device-api.iml" filepath="$PROJECT_DIR$/device-api/device-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/device-commons/device-commons.iml" filepath="$PROJECT_DIR$/device-commons/device-commons.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../autodevice/device-consumer/device-consumer.iml" filepath="$PROJECT_DIR$/../autodevice/device-consumer/device-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/device-consumer/device-consumer.iml" filepath="$PROJECT_DIR$/device-consumer/device-consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/device-provider/device-provider.iml" filepath="$PROJECT_DIR$/device-provider/device-provider.iml" />
     </modules>
   </component>

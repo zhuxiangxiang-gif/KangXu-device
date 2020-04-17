@@ -1,14 +1,25 @@
 package com.kangxu.device.mapper;
 
 import com.kangxu.device.pojo.DevInfo;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * 设备接口调用信息DAO
  */
+@Repository
 public interface DevInfoMapper{
-	
+
+	/**
+	 * 设置版本号
+	 */
+	void SetVersion();
+
+
+
+
+
 	/**
 	 * 批量插入
 	 * @param devInfoList

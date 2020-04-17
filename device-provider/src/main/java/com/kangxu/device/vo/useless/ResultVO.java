@@ -1,4 +1,4 @@
-package com.kangxu.device.vo;
+package com.kangxu.device.vo.useless;
 
 import lombok.Data;
 

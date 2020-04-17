@@ -12,6 +12,7 @@
         <module name="device-consumer" />
         <module name="device-provider" />
         <module name="eureke-service" />
+        <module name="Zuul" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +23,7 @@
       <module name="device-consumer" target="1.8" />
       <module name="device-provider" target="1.8" />
       <module name="eureke-service" target="1.8" />
+      <module name="Zuul" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

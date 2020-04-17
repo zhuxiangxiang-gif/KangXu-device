@@ -1,0 +1,26 @@
+server:
+  port: 8005
+
+spring:
+  application:
+    name: device-Zuul
+
+zuul:
+  #ignored-services: microservicecloud-dept    //外部通过微服务应用不可以访问
+#  prefix: /atguigu                             //添加前缀
+#  ignored-services: "*"                        //忽略所有的
+  routes:
+    api-a:    #可以随便写，在zuul上面唯一即可；当这里的值=service-id时，service-id可以不写。
+      path: /ribbon/**
+      serviceId: device-provider  #如果是/ribbon/**路径下的请求，则跳转到service-ribbon
+    api-b:
+      path: /kangxu/**
+      serviceId: device-consumer  #如果是/feign/**路径下的请求，则跳转到service-feign
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+
+
+

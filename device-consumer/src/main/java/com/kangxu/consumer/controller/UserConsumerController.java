@@ -12,6 +12,7 @@ import java.util.List;
  * @create: 2020-04-14 22:30
  **/
 @RestController
+@RequestMapping(value = "/kangxu")
 public class UserConsumerController {
 
     @Autowired

@@ -1,4 +1,6 @@
-package com.kangxu.device.vo;
+package com.kangxu.device.vo.useless;
+
+import com.kangxu.device.vo.useless.ResultVO;
 
 /**
  * Created by
@@ -6,7 +8,7 @@ package com.kangxu.device.vo;
  */
 public class ResultVOUtil {
 
-    public static ResultVO success(Object object,Object obj) {
+    public static ResultVO success(Object object, Object obj) {
         ResultVO resultVO = new ResultVO();
         resultVO.setRequest(object);
         resultVO.setHeaders(obj);

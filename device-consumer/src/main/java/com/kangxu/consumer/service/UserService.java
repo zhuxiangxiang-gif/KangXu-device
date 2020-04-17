@@ -12,9 +12,9 @@ import java.util.List;
 @FeignClient(value="device-provider")
 public interface UserService {
 
-    @RequestMapping(value = "/findAll",method = RequestMethod.GET)
+    @RequestMapping(value = "/kangxu/findAll11",method = RequestMethod.GET)
     public List<User> findAll();
 
-    @RequestMapping(value = "/findId",method = RequestMethod.GET)
+    @RequestMapping(value = "/kangxu/findId",method = RequestMethod.GET)
     public User findById(@RequestParam(value = "id") String id);
 }
